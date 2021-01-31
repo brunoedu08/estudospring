@@ -9,22 +9,20 @@ import javax.persistence.Id;
 public class Produto {
 
 	private String nome;
-	private Integer valor;
+	private float valor;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	
 	
 	public Produto() {
 		
 	}
 	
-	public Produto(String nome, Integer valor, Long id) {
-		super();
+	public Produto(String nome, float valor) {
 		this.nome = nome;
 		this.valor = valor;
-		this.id = id;
 	}
 
 	public String getNome() {
@@ -33,16 +31,16 @@ public class Produto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Integer getValor() {
+	public float getValor() {
 		return valor;
 	}
-	public void setValor(Integer valor) {
+	public void setValor(float valor) {
 		this.valor = valor;
 	}
-	public long getI() {
+	public long getId() {
 		return id;
 	}
-	public void setCodigo(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 }
