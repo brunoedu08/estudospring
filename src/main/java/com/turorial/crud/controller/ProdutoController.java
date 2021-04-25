@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -51,5 +52,15 @@ public class ProdutoController {
 		produtoService.saveProduto(produto);
 		
 		return new ResponseEntity(new MensagemDTO("Adicionado"), HttpStatus.OK);
+	}
+	
+	@DeleteMapping(value = "/delete-{id}")
+	public ResponseEntity<?> deleteProdutoByID(@PathVariable("id") Integer id){
+		if(produtoService.existsById(id)) {
+			produtoService.deleteProdutoById(id);
+			return new ResponseEntity(new MensagemDTO("Produto deletado"), HttpStatus.OK);
+		}else {
+			return new ResponseEntity(new MensagemDTO("Não encontrado"), HttpStatus.NOT_FOUND);
+		}
 	}
 }
