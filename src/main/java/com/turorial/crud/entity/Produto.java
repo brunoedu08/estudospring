@@ -5,42 +5,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
-public class Produto {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+public class Produto {
+	@Getter @Setter
 	private String nome;
+	@Getter @Setter
 	private float valor;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Getter @Setter
 	private int id;
 	
 	
-	public Produto() {
-		
-	}
-	
-	public Produto(String nome, float valor) {
-		this.nome = nome;
-		this.valor = valor;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public float getValor() {
-		return valor;
-	}
-	public void setValor(float valor) {
-		this.valor = valor;
-	}
-	public long getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 }

@@ -1,18 +1,11 @@
 package com.turorial.crud.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 public class MensagemDTO {
 	
 	private String mensagem;
-
-	public MensagemDTO(String mensagem) {
-		this.mensagem = mensagem;
-	}
-
-	public String getMensagem() {
-		return mensagem;
-	}
-
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
-	}
 }

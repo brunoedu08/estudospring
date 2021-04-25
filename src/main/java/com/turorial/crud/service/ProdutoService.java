@@ -33,7 +33,7 @@ public class ProdutoService {
 		produtoRepository.save(produto);
 	}
 	
-	public void deleteProdutoById (Integer id) {
+	public void deleteProdutoById (int id) {
 		produtoRepository.deleteById(id);
 	}
 	
