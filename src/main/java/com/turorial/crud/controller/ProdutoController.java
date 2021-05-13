@@ -3,6 +3,8 @@ package com.turorial.crud.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.xml.ws.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,5 +63,21 @@ public class ProdutoController {
 		}else {
 			return new ResponseEntity(new MensagemDTO("Não encontrado"), HttpStatus.NOT_FOUND);
 		}
+	}
+	
+	@PostMapping(value = "/update-{id}")
+	public ResponseEntity<?> updateProduto(@PathVariable("id") Integer id, @RequestBody ProdutoDTO produtoDTO){
+		Optional<Produto> produto = produtoService.getProdutoById(id);
+		produto.get().setId(id);
+		produto.get().setNome(produtoDTO.getNome());
+		produto.get().setValor(produtoDTO.getValor());
+		
+		if(produto.isPresent()) {
+			produtoService.saveProduto(produto.get());
+			return new ResponseEntity(new MensagemDTO("Produto atualizado"), HttpStatus.OK);			
+		}else {
+			return new ResponseEntity(new MensagemDTO("O id desse produto não existe"), HttpStatus.NOT_FOUND);
+		}
+		
 	}
 }
